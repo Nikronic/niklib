@@ -127,3 +127,17 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ignore raw-dataset/*files
+# ignore raw data (same as `.dvcignore`)
+raw-dataset/some_dir_containing_data_that_you_want_to_ignore
+
+# ignore redundant logs
+mlruns
+artifacts
+mlflow.db
+
+# gradio
+gradio_queue.db
+# gradio/gradio_specific
+*.db-journal
