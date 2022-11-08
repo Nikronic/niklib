@@ -1,0 +1,10 @@
+# Add patterns of files dvc should ignore, which could improve
+# the performance. Learn more at
+# https://dvc.org/doc/user-guide/dvcignore
+
+# ignore raw data
+raw-dataset/some_dir_containing_data_that_you_want_to_ignore
+
+# ignore redundant logs
+notebooks/
+mlruns/

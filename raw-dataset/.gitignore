@@ -1,0 +1,4 @@
+# All of these has to happen within DVC 
+# add all main data files to be ignored by dvc (/*.pkl)
+#   doing this, will create a file `all.pkl.dvc`
+# /all.pkl
