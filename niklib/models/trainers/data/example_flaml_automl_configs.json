@@ -1,0 +1,13 @@
+{
+    "method_fit": {
+        "FLAML_AUTOML_METRIC": "log_loss",
+        "FLAML_AUTOML_TASK": "classification",
+        "FLAML_AUTOML_MAX_ITER": 100,
+        "FLAML_SPLIT_RATIO": 0.1,
+        "FLAML_AUTOML_MEM_THRES": 19327352832,
+        "FLAML_AUTOML_N_CONCURRENT_TRIALS": 1,
+        "FLAML_AUTOML_AUTO_AUGMENT": false,
+        "FLAML_AUTOML_EARLY_STOP": false,
+        "FLAML_AUTOML_VERBOSE": 5
+    }
+}

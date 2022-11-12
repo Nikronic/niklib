@@ -1,0 +1,41 @@
+{
+    "all_continuous_StandardScaler": {
+        "columns_type": "'numeric'",
+        "dtype_include": "np.float32",
+        "pattern_include": "None",
+        "pattern_exclude": "None",
+        "dtype_exclude": "None",
+        "group": "False",
+        "use_global": "False"
+    },
+
+    "binary_categorical_OneHotEncoder": {
+        "columns_type": "'numeric'",
+        "dtype_include": "'category'",
+        "pattern_include": "'.*(Indicator|Sex|Stay|Deport|PrevApply).*'",
+        "pattern_exclude": "None",
+        "dtype_exclude": "None",
+        "group": "False",
+        "use_global": "True"
+    },
+
+    "Relationship_categorical_OneHotEncoder": {
+        "columns_type": "'numeric'",
+        "dtype_include": "'category'",
+        "pattern_include": "'.*(Relationship).*'",
+        "pattern_exclude": "'.*(Chd).*'",
+        "dtype_exclude": "None",
+        "group": "False",
+        "use_global": "True"
+    },
+
+    "Occ_categorical_OneHotEncoder": {
+        "columns_type": "'numeric'",
+        "dtype_include": "'category'",
+        "pattern_include": "'.*(Occ\\.Occ).*'",
+        "pattern_exclude": "None",
+        "dtype_exclude": "None",
+        "group": "True",
+        "use_global": "True"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "result_LabelBinarizer": {
+        "columns_type": "'numeric'",
+        "dtype_include": "None",
+        "pattern_include": "'VisaResult'",
+        "pattern_exclude": "None",
+        "dtype_exclude": "None"
+    }
+}

@@ -1,0 +1,5 @@
+{
+    "train_ratio": 0.80,
+    "shuffle": true,
+    "stratify": null
+}
