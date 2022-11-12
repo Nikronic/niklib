@@ -95,49 +95,58 @@ class Logger(logging.Logger):
             return Path(string)
         return string
 
-    def _setup_mlflow_artifacts_dirs(self, base_path: Union[str, Path]) -> None:
+    def _setup_mlflow_artifacts_dirs(
+        self,
+        base_path: Union[str, Path],
+        subdirs: Optional[List[str]] = None
+        ) -> None:
         """Builds the directories for saving images, logs, and configs as mlflow artifacts
-
-        Following type of artifacts are predefined and each will be considered as a
-        subdirectory of ``base_path``:
-
-            - images: ``images``
-            - logging prints: ``logs``
-            - configs of classes, setting, etc as json files: ``configs``
-            - model weights or objects: ``models``
-            - ``MLflow`` flavor-specific tracked model: ``MLmodel`` 
-
+        
         Note:
             If you are using this class for just flagging the data,
             you can simply send numerical values (``1/*``, ``2/*``)
         
-        Todo:
-            Make generation of the directories and their constant attributes (self.*)
-            automatic given a list of names rather than this hardcoded pepega mode.
-
         Args:
-            base_path (Union[str, :class:`pathlib.Path`]): Base path for artifacts. 
+            base_path (Union[str, :class:`pathlib.Path`]): Base path for artifacts.
+            subdirs (List[str], optional): A list of names of directories that will be 
+                subdirectories of ``base_path`` for separating different artifacts. 
+                These subdirs are available as properties that start with
+                ``MLFLOW_ARTIFACTS_SUBDIRS[x]_PATH``.
+                Following type of artifacts are predefined and each will be considered as a
+                subdirectory of ``base_path`` if ``None`` is provided:
+
+                    - images: ``images``
+                    - logging prints: ``logs``
+                    - configs of classes, setting, etc as json files: ``configs``
+                    - model weights or objects: ``models``
+                    - ``mlflow`` flavor-specific tracked model: ``MLmodel`` 
+                
+                Please use names that only contain characters, numbers and dash/underline.
         """
+
+        # construct subdir names
+        if subdirs is None:
+            subdirs = ['logs', 'configs', 'images', 'models', 'MLmodel']
+        
+        # construct base dir path
         base_path = self.__str_to_path(string=base_path)
         base_path = self.mlflow_artifacts_base_path / base_path
-        MLFLOW_ARTIFACTS_LOGS_PATH = base_path / 'logs'
-        MLFLOW_ARTIFACTS_CONFIGS_PATH = base_path / 'configs'
-        MLFLOW_ARTIFACTS_IMAGES_PATH = base_path / 'images'
-        MLFLOW_ARTIFACTS_MODELS_PATH = base_path / 'models'
-        MLFLOW_ARTIFACTS_MLMODELS_PATH = base_path / 'MLmodel'
         if not base_path.exists():
             base_path.mkdir(parents=True)
-            MLFLOW_ARTIFACTS_LOGS_PATH.mkdir(parents=True)
-            MLFLOW_ARTIFACTS_CONFIGS_PATH.mkdir(parents=True)
-            MLFLOW_ARTIFACTS_IMAGES_PATH.mkdir(parents=True)
-            MLFLOW_ARTIFACTS_MODELS_PATH.mkdir(parents=True)
-            MLFLOW_ARTIFACTS_MLMODELS_PATH.mkdir(parents=True)
 
-        self.MLFLOW_ARTIFACTS_LOGS_PATH = MLFLOW_ARTIFACTS_LOGS_PATH
-        self.MLFLOW_ARTIFACTS_CONFIGS_PATH = MLFLOW_ARTIFACTS_CONFIGS_PATH
-        self.MLFLOW_ARTIFACTS_IMAGES_PATH = MLFLOW_ARTIFACTS_IMAGES_PATH
-        self.MLFLOW_ARTIFACTS_MODELS_PATH = MLFLOW_ARTIFACTS_MODELS_PATH
-        self.MLFLOW_ARTIFACTS_MLMODELS_PATH = MLFLOW_ARTIFACTS_MLMODELS_PATH
+        # construct subdirs' path
+        for subdir in subdirs:
+            subdir_path: Path = base_path / subdir
+            if not subdir_path.exists():
+                subdir_path.mkdir(parents=True)
+
+                # dynamically create properties
+                #   with names `MLFLOW_ARTIFACTS_[_subdir]_PATH` (all upper)
+                setattr(
+                    self,
+                    f'MLFLOW_ARTIFACTS_{str.upper(subdir)}_PATH',
+                    subdir_path
+                )
 
     def _remove_previous_handlers(self) -> None:
         """This is used to remove file related handlers on each new run of :meth:`create_artifact_instance`
@@ -192,3 +201,6 @@ class Logger(logging.Logger):
 
         # keep last handler so we can remove it on next call
         self.__prev_handler = logger_handler
+
+kek = Logger('kek', 10, 'kek')
+kek.create_artifact_instance('lel')
