@@ -97,6 +97,7 @@ class XFAPDF(PDFIO):
         # `datasets` keyword contains filled forms in XFA array
         xml = xfa[xfa.index('datasets')+1].get_object().get_data()
         xml = str(xml)  # convert bytes to str
+        logger.info(f'XFA content of {pdf_path} extracted as XML.')
         return xml
 
     def clean_xml_for_csv(self, xml: str, mode: Enum) -> str:
@@ -191,5 +192,7 @@ class ExampleXFA(XFAPDF):
             xml = re.sub(r"b'\\n", '', xml)
             xml = re.sub(r"'", '', xml)
             xml = re.sub(r"\\n", '', xml)
+
+        logger.info(f'Finished cleaning XML content.')
 
         return xml
