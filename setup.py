@@ -27,6 +27,8 @@ setup(
   include_package_data = True,
   # ref https://stackoverflow.com/a/73649552/18971263
   package_data={
-        'niklib.configs': ['**/*.csv']
+        'niklib.configs': ['**/*.csv', '**/*.json'],
+        'niklib.models.preprocessors': ['**/*.json'],
+        'niklib.models.trainers': ['**/*.json'],
       }
 )
