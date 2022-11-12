@@ -1,10 +1,7 @@
 # Configuration file for the Sphinx documentation builder.
 #
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
+# For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
-
-# -- Path setup --------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -14,8 +11,8 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
 
-
 # -- Project information -----------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'niklib'
 copyright = f'{datetime.datetime.now().year}, Nikan Doosti'
@@ -27,8 +24,8 @@ with open('../../niklib/version.py', 'r') as version_file:
     exec(version_file.read(), VERSION)
 release = VERSION['VERSION']
 
-
 # -- General configuration ---------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -58,13 +55,10 @@ templates_path = ['_templates']
 # The master toctree document.
 master_doc = 'index'
 
-
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [
-    'niklib.ipynb/*',
-    'niklib.*main.py',
     'niklib.version',
     '_build'
 ]
@@ -72,10 +66,10 @@ exclude_patterns = [
 autosummary_generate = True
 
 # -- Options for HTML output -------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-#
 html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -102,26 +96,25 @@ autodoc_member_order = 'bysource'
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
     'numpy': ('https://numpy.org/doc/stable', None),
+    'snorkel': ('https://snorkel.readthedocs.io/en/latest/', None),
+    'matplotlib': ('https://matplotlib.org/stable/', None),    
+    'pandas': ('https://pandas.pydata.org/pandas-docs/stable/', None),
     'sklearn': ('https://scikit-learn.org/stable/', None),
-    'matplotlib': ('https://matplotlib.org/', None),
-    # 'snorkel': ('https://snorkel.readthedocs.io/en/latest/', None),
-    # 'pandas': ('https://pandas.pydata.org/pandas-docs/stable/', None),
-    # 'shap': ('https://shap.readthedocs.io/en/latest/', None),
-    # 'lightgbm': ('https://lightgbm.readthedocs.io/en/latest/', None),
+    'lightgbm': ('https://lightgbm.readthedocs.io/en/latest/', None),
+    'xgboost': ('https://xgboost.readthedocs.io/en/stable/', None),
+    'mlflow': ('https://mlflow.org/docs/latest/', None)
 }
 
 # This value contains a list of modules to be mocked up
 autodoc_mock_imports = [
-    "numpy",
-    "matplotlib",
-    "typing",
-    "sklearn",
-    # "snorkel",
-    # "pandas",
-    # "scipy",
-    # "flaml",
-    # "dtreeviz",
-    # "shap",
-    # "lightgbm",
-    # "catboost",
+    # 'numpy',
+    # 'matplotlib',
+    'typing',
+    # 'sklearn',
+    # 'mlflow',
+    'flaml',
+    # 'snorkel',
+    'dvc',
+    # 'xgboost',
+    'catboost'
 ]
