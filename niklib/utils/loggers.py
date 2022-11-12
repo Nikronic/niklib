@@ -201,6 +201,3 @@ class Logger(logging.Logger):
 
         # keep last handler so we can remove it on next call
         self.__prev_handler = logger_handler
-
-kek = Logger('kek', 10, 'kek')
-kek.create_artifact_instance('lel')
