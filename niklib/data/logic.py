@@ -19,12 +19,15 @@ class Logics:
     Note: 
         This is constructed based on domain knowledge hence is designed 
         for a specific purpose based on application.
-        For demonstration purposes, see following methods of this class
+
+        For demonstration purposes, see following methods of this class:
+
             - :meth:`count_previous_residency_country`
             - :meth:`count_rel`
             - :meth:`count_foreign_family_resident`
 
         These methods has be implemented by their superclass. See:
+        
             - :meth:`ExampleLogics.count_previous_residency_country`
             - :meth:`ExampleLogics.count_rel`
             - :meth:`ExampleLogics.count_foreign_family_resident`
