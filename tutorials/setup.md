@@ -39,3 +39,11 @@ Currently, they all are needed for the code to work, but they will be made optio
 2. enlighten: `mamba install -c conda-forge enlighten`: For having progress bar in log that can be redirected from std to another std. (here from console to file for mlflow artifact)
 3. dvc: `mamba install -c conda-forge dvc==2.10.2`: Data version control which is a must have in ML. Note that even though one can use both CLI and python SKD and also can install `dvc` in system-wide, because I use it in integration with `mlflow`, I prefer to have `dvc` in this virtual environment rather than OS package level. Also, make sure to install `2.10.2` until [this bug](https://github.com/iterative/dvc/issues/7927) is fixed. You can of course install the latest version as this bug could be easily resolved by hardcoding.
 4. matplotlib: `mamba install -c conda-forge matplotlib`: for vis.
+
+### Docs
+The only mandatory one here is `sphinx`. All other ones can be ignored and in that case, you need to remove the corresponding line in `docs/src/conf.py`.
+1. sphinx: `pip install sphinx`: Building the docs.
+2. sphinx-rtd-theme: `pip install sphinx-rtd-theme`: Just a theme.
+3. sphinx-autodoc-typehints: `pip install sphinx-autodoc-typehints`: For automatically documenting type hints
+4. : `pip install sphinx-copybutton`: Copy button for the source code.
+
