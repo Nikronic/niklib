@@ -282,7 +282,7 @@ def log_mlflow_model(
             registered_model_name=registered_model_name
         )
 
-    logger.info(
+    logger.warning(
         f'model of type "{estimator.__class__.__name__}"'
         f' is tracked via MLflow.'
     )

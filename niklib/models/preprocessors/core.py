@@ -100,7 +100,7 @@ class TrainTestEvalSplit:
         self.conf_path = path
 
         # log the path used
-        self.logger.info(f'Config file "{self.conf_path}" is being used')
+        self.logger.warning(f'Config file "{self.conf_path}" is being used')
 
         # read the json file
         with open(path, 'r') as f:
@@ -135,6 +135,7 @@ class TrainTestEvalSplit:
         target_path = target_path / self.conf_path.name
         with open(target_path, 'w') as f:
             json.dump(configs, f)
+        self.logger.info(f'"{target_path}" saved as a artifact.')
 
     def __call__(
         self,
@@ -261,7 +262,7 @@ class PandasTrainTestSplit:
         self.conf_path = path
 
         # log the path used
-        self.logger.info(f'Config file "{self.conf_path}" is being used')
+        self.logger.warning(f'Config file "{self.conf_path}" is being used')
 
         # read the json file
         with open(path, 'r') as f:
@@ -296,6 +297,7 @@ class PandasTrainTestSplit:
         target_path = target_path / self.conf_path.name
         with open(target_path, 'w') as f:
             json.dump(configs, f)
+        self.logger.info(f'"{target_path}" saved as a artifact.')
 
     def __call__(
         self,
@@ -555,7 +557,7 @@ class ColumnTransformerConfig:
         self.conf_path = path
 
         # log the path used
-        self.logger.info(f'Config file "{self.conf_path}" is being used')
+        self.logger.warning(f'Config file "{self.conf_path}" is being used')
 
         # read the json file
         with open(path, 'r') as f:
@@ -613,6 +615,7 @@ class ColumnTransformerConfig:
         target_path = target_path / self.conf_path.name
         with open(target_path, 'w') as f:
             json.dump(configs, f)
+        self.logger.info(f'"{target_path}" saved as a artifact.')
 
     @staticmethod
     def extract_selected_columns(
@@ -789,7 +792,8 @@ class ColumnTransformerConfig:
                     name_b: str = transformers[j][0]  # (name, _, _)
                     self.logger.info(
                         f'transformer "{name_a}" is overlapping with\n'
-                        f' transformer "{name_b}" on columns {overlap}')
+                        f' transformer "{name_b}" on columns {overlap}'
+                    )
 
     def generate_pipeline(
         self,
@@ -859,6 +863,9 @@ class ColumnTransformerConfig:
 
             # add to the list of transformers
             transformers.append((name, transformer, columns))
+            self.logger.info(
+                f'Transformer with name "{name}" has been constructed.'
+            )
 
         # throw logs if columns of different self.CONF overlap
         self._check_overlap_in_transformation_columns(transformers)
