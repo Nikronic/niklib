@@ -188,7 +188,7 @@ def process_directory(
         filenames = filter(lambda fname: fnmatch(
             fname, file_pattern), all_filenames)
         dirname = dirpath[len(dirpath) - dirpath[::-1].find('/'):]
-        logger.info(f'Processing directory="{dirname}"...')
+        logger.warning(f'Processing directory="{dirname}"...')
         if filenames:
             dir_ = os.path.join(dst_dir, dirpath.replace(src_dir, ''))
             os.makedirs(dir_, exist_ok=True)

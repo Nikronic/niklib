@@ -138,9 +138,9 @@ def preview_column_transformer(
         # show info about onehot encoder changes
         elif isinstance(ct.transformers[idx][1], OneHotEncoder):
             count_uniques = df.iloc[:, columns_indices].nunique().sum()
-            logger.info(f'For "{ct.transformers[idx][0]}" transformer: ')
-            logger.info(f'{len(columns_indices)} columns are affected. ')
-            logger.info(
+            logger.warning(f'For "{ct.transformers[idx][0]}" transformer: ')
+            logger.warning(f'{len(columns_indices)} columns are affected. ')
+            logger.warning(
                 f'On selected columns, {count_uniques} unique values exist. '
                 f'It is expected to have {count_uniques - len(columns_indices)}'
                 f' new columns and '
