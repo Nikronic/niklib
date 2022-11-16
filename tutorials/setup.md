@@ -45,5 +45,5 @@ The only mandatory one here is `sphinx`. All other ones can be ignored and in th
 1. sphinx: `pip install sphinx`: Building the docs.
 2. sphinx-rtd-theme: `pip install sphinx-rtd-theme`: Just a theme.
 3. sphinx-autodoc-typehints: `pip install sphinx-autodoc-typehints`: For automatically documenting type hints
-4. sphinx-copybutton: `pip install sphinx-copybutton`: Copy button for the source code.
+4. : `pip install sphinx-copybutton`: Copy button for the source code.
 
