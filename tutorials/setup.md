@@ -31,7 +31,6 @@ about the `pip` but still install the `conda-forge` one.
 12. sqlalchemy: `pip install sqlalchemy`: For databases used via API
 13. uvicorn (standard): `pip install uvicorn[standard]`: For serving in production. If you want to use `uvicorn` for debugging, it is better to use `pip install uvicorn` as this is a pure python and easier to read.
 
-
 ### Install Helpers Packages
 Currently, they all are needed for the code to work, but they will be made optional maybe in future.
 
@@ -45,5 +44,4 @@ The only mandatory one here is `sphinx`. All other ones can be ignored and in th
 1. sphinx: `pip install sphinx`: Building the docs.
 2. sphinx-rtd-theme: `pip install sphinx-rtd-theme`: Just a theme.
 3. sphinx-autodoc-typehints: `pip install sphinx-autodoc-typehints`: For automatically documenting type hints
-4. : `pip install sphinx-copybutton`: Copy button for the source code.
-
+4. sphinx-copybutton: `pip install sphinx-copybutton`: Copy button for the source code.
