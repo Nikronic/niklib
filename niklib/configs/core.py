@@ -6,6 +6,64 @@ from pathlib import Path
 
 
 class JsonConfigHandler:
+    """Initializes a class or method based on a predefined json config file
+
+    In the highest level of configs, there are keys that contain the name of method
+    or property of a ``Callable`` object. These needs to be passed to the :meth:`parse`
+    method of the :class:`niklib.configs.core.JsonConfigHandler` class.
+
+    Here is the convention of constructing json config file:
+        - name the json file itself as whatever you wish. But better to be
+        something that represents the class object you are trying to config.
+        e.g. assume we have ``flaml_automl`` object hence we name the json file
+        as ``example_flaml_automl_configs.json``.
+        - in highest level, if args of a method need to be defined,
+        use ``method_[name_of_the_method_of_your_class]``. e.g. let's say
+        ``flaml_automl`` has ``fit`` method, then key in json would be
+        named ``method_fit``.
+        - values of each key are the arguments of that key. E.g. let's say
+        ``method_fit`` has args ``task`` and ``max_iter``. Then the value
+        for ``method_fit`` would be ``[YOUR_CLASS_NAME]_[ARG]: value``. E.g.
+        ``FLAML_AUTOML_TASK: "classification"``` or ``FLAML_AUTOML_MAX_ITER: 100``.
+
+    Here is a full example::
+
+    ```json
+    {
+        "method_fit": {
+            "FLAML_AUTOML_METRIC": "log_loss",
+            "FLAML_AUTOML_TASK": "classification",
+            "FLAML_AUTOML_MAX_ITER": 100,
+            "FLAML_SPLIT_RATIO": 0.1,
+            "FLAML_AUTOML_MEM_THRES": 19327352832,
+            "FLAML_AUTOML_N_CONCURRENT_TRIALS": 1,
+            "FLAML_AUTOML_AUTO_AUGMENT": false,
+            "FLAML_AUTOML_EARLY_STOP": false,
+            "FLAML_AUTOML_VERBOSE": 5
+        }
+    }
+
+    ```
+
+    After defining this file, you can added it as a constant to the root of 
+    the package hosting the class for this config. E.g. this example was for
+    ``flaml`` model which is in :mod:`niklib.models.trainers.aml_flaml`.
+    So, you can fill :mod:`niklib.models.trainers.__init__` with a 
+    constant to the path of this json. In the end, you can using this way:
+
+        >>> from niklib.configs import JsonConfigHandler
+        >>> from niklib.models.trainers.aml_flaml import AutoML
+        >>> configs = JsonConfigHandler.parse(EXAMPLE_FLAML_AUTOML_CONFIGS, AutoML)
+        >>> configs['method_fit']['task']
+        classification
+        >>> configs['method_fit']['max_iter']
+        100
+
+    Note:
+        This class has hardcoded and customized definitions for different
+        ``target`` values which can be found in the each packages ``data`` dir
+        such as ``niklib.models.trainers.EXAMPLE_FLAML_AUTOML_CONFIGS``.
+    """
     def __init__(self) -> None:
         return None
 
@@ -18,22 +76,9 @@ class JsonConfigHandler:
     def parse(self, filename: Union[Path, str], target: str) -> dict:
         """Takes a json file path and parse it for a particular class or method
 
-        In the highest level of configs, there are keys that contain the name of method
-        or property of a `Callable` object. These needs to be passed to the :meth:`parse`
-        method of the :class:`niklib.configs.core.JsonConfigHandler` class.
-
-            >>> from niklib.configs import JsonConfigHandler
-            >>> from niklib.labeling.model import LabelModel
-            >>> configs = JsonConfigHandler.parse(LABEL_MODEL_CONFIGS, LabelModel)
-            >>> configs['method_fit']['n_epochs']
-            100
-            >>> configs['method_init']['cardinality']
-            2
-
         Note:
-            This method has hardcoded and customized definitions for different
-            ``target`` values which can be found in the ``niklib.configs`` constant
-            variables such as ``niklib.configs.LABEL_MODEL_CONFIGS``.
+            See class description about valid json configs and the way
+            they are constructed.
 
         Args:
             filename (Union[Path, str]): Path to JSON file
