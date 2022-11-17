@@ -65,7 +65,7 @@ class PayloadExample(BaseModel):
     knowledge as a validator function.
 
     ``sex`` is an example were it could be fixed, hence an :class:`enum.Enum`
-    with fixed members has been defined in :class:`niklib.data.constant.Sex` that contains it.
+    with fixed members has been defined in :class:`niklib.data.constant.ExampleSex` that contains it.
 
     ``funds`` is a domain-specific knowledge that in this example, cannot be negative.
     or in some cases it could not surpass a specific value. For this, developer

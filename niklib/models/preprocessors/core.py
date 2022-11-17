@@ -67,11 +67,11 @@ class TrainTestEvalSplit:
 
         The keys of the configs are the attributes of this class which are:
 
-            * test_ratio (float): Ratio of test data
-            * eval_ratio (float): Ratio of eval data
-            * shuffle (bool): Whether to shuffle the data
-            * stratify (Optional[:class:`numpy.ndarray`]): If not None, this is used to stratify the data
-            * random_state (Optional[int]): Random state to use for shuffling
+            * ``test_ratio`` (float): Ratio of test data
+            * ``eval_ratio`` (float): Ratio of eval data
+            * ``shuffle`` (bool): Whether to shuffle the data
+            * ``stratify`` (:class:`numpy.ndarray`, optional): If not None, this is used to stratify the data
+            * ``random_state`` (int, optional): Random state to use for shuffling
 
         Note:
             You can explicitly override following attributes by passing it as an argument
@@ -87,7 +87,7 @@ class TrainTestEvalSplit:
             path: path to the JSON file containing the configs
 
         Returns:
-            dict: A dictionary of `str`: `Any` pairs of configs as class attributes
+            dict: A dictionary of ``str``: ``Any`` pairs of configs as class attributes
         """
 
         # convert str path to Path
@@ -230,10 +230,10 @@ class PandasTrainTestSplit:
 
         The keys of the configs are the attributes of this class which are:
 
-            * train_ratio (float): Ratio of train data
-            * shuffle (bool): Whether to shuffle the data
-            * stratify (Optional[np.ndarray]): If not None, this is used to stratify the data
-            * random_state (Optional[int]): Random state to use for shuffling
+            * ``train_ratio`` (float): Ratio of train data
+            * ``shuffle`` (bool): Whether to shuffle the data
+            * ``stratify`` (:class:`numpy.ndarray`, optional): If not None, this is used to stratify the data
+            * ``random_state`` (int, optional): Random state to use for shuffling
 
         Note:
             You can explicitly override following attributes by passing it as an argument

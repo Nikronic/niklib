@@ -30,7 +30,7 @@ Note:
     This is part of dictionaries containing factors in used in heuristic
     calculations using domain knowledge.
 
-Info:
+Note:
     Although this is created as an code example, values chosen here are
     from basic rule of thump and actually can be used if no other
     reliable information is available.
@@ -86,7 +86,7 @@ class CustomNamingEnum(Enum):
         and other domain-specific values. E.g. compare values in :class:`MarriageStatus`
         and :class:`SiblingRelation`.
 
-    Info:
+    Note:
         If you need to customize naming specifically, you need to override
         :attr:`name` similar to what is done in this class. i.e.::
 
@@ -123,7 +123,7 @@ class ExampleMarriageStatus(CustomNamingEnum):
         it should not be modified by any means as it is tied to dataset, transformation,
         and other domain-specific values.
 
-    Info:
+    Note:
         These values have been chosen for demonstration purposes in this class and
         and do not carry any meaning or information (El No Sabe). But for real world,
         you must use meaningful ones.
@@ -172,7 +172,7 @@ class ExampleSex(CustomNamingEnum):
     Note:
         The values of enum members are not important, hence no explicit valuing is used
 
-    Info:
+    Note:
         The name of the members has to be customized because of bad preprocessing
         (or in some cases, domain-specific knowledge), hence, :attr:`name` has
         been overridden.

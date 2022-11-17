@@ -7,7 +7,8 @@ from typing import Callable
 class StandaloneApplication(BaseApplication):
     """A runner to help us parse ``argparse`` next to ``gunicorn`` args
 
-    For options, you can visit https://docs.gunicorn.org/en/latest/settings.html
+    Note:
+        For options, you can visit https://docs.gunicorn.org/en/latest/settings.html
     """
 
     def __init__(self, app: Callable, options: dict = None):

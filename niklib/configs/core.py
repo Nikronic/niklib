@@ -88,7 +88,8 @@ class JsonConfigHandler:
             ValueError: If the target class or method is not supported or implemented
 
         Returns:
-            dict: A dictionary containing the configs for each possible method or property
+            dict:
+                A dictionary containing the configs for each possible method or property
                 of the target class or method.
         """
         # convert str path to Path
