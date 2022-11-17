@@ -31,8 +31,8 @@ def get_loss_score(
     """Gives loss score given predicted and true labels and metrics
 
     Args:
-        y_predict (np.ndarray): Predicted labels, same shape as ``y_true``
-        y_true (np.ndarray): Ground truth labels, same shape as ``y_predict``
+        y_predict (:class:`numpy.ndarray`): Predicted labels, same shape as ``y_true``
+        y_true (:class:`numpy.ndarray`): Ground truth labels, same shape as ``y_predict``
         metrics (Union[List[str], str, callable]): ``metrics`` can be either
             a metric name (``str``) or a list of metric names that is supported
             by ``flaml.ml.sklearn_metric_loss_score``.
@@ -49,8 +49,8 @@ def get_loss_score(
 
     Returns:
         Dict[str, Any]:
-        Dictionary of ``{'metric_name': metric_value}`` for all given
-        ``metrics``.
+            Dictionary of ``{'metric_name': metric_value}`` for all given
+            ``metrics``.
 
     See Also:
         * :func:`report_loss_score`

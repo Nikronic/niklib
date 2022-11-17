@@ -41,7 +41,7 @@ class Logics:
         """Init class by setting dataframe globally
 
         Args:
-            dataframe (pd.DataFrame, optional): The dataframe that functions of this class 
+            dataframe (:class:`pandas.DataFrame`, optional): The dataframe that functions of this class 
                 will be user over its series, i.e. ``Logics.*(series)``. Defaults to None.
         """
         self.df = dataframe
@@ -73,7 +73,7 @@ class Logics:
                 logics.reset_dataframe(dataframe=my_df)
 
         Args:
-            dataframe (pd.DataFrame): The new dataframe
+            dataframe (:class:`pandas.DataFrame`): The new dataframe
         """
         self.df = dataframe
 
@@ -106,7 +106,7 @@ class Logics:
                 my_df = logics.add_agg_column(...)
 
         Returns:
-            pd.DataFrame: Updated dataframe that contains aggregated data
+            :class:`pandas.DataFrame`: Updated dataframe that contains aggregated data
         """
         # check self.df is initialized
         self.__check_df(func=self.add_agg_column.__name__)
@@ -142,12 +142,6 @@ class Logics:
 
     def count_foreign_family_resident(self, series: pd.Series) -> int:
         """Counts the number of family members that are living in a foreign country
-
-        Note:
-            This is an special case of :func:`count_long_distance_family_resident` 
-            where those who are living in another country are treated
-            separately. In case you don't care, just use 
-            :func:`count_long_distance_family_resident` instead.
 
         Args:
             series (:class:`pandas.Series`): Pandas Series to be processed
@@ -203,10 +197,6 @@ class ExampleLogics(Logics):
 
         This is being done by only checking the literal value ``'foreign'`` in the
         ``'*Addr'`` columns (address columns).
-
-        Note:
-            Those who are living in another city are not considered as "foreign". In
-            that case, see :func:`count_long_distance_family_resident` for more info.
 
         Args:
             series (:class:`pandas.Series`): Pandas Series to be processed containing 

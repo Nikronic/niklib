@@ -106,12 +106,12 @@ class XFAPDF(PDFIO):
         Since each form has its own format and issues, this method needs
         to be implemented uniquely for each unique file/form which needs
         to be specified using argument ``mode`` that can be populated from
-        :class:`niklib.data.constant.DocTypes`.
+        :class:`niklib.data.constant.ExampleDocTypes`.
 
         Args:
             xml (str): XML content
             mode (Enum): mode of the document defined
-                in :class:`niklib.data.constant.DocTypes`
+                in :class:`niklib.data.constant.ExampleDocTypes`
 
         Returns:
             str: cleaned XML content to be used in CSV file
@@ -152,7 +152,6 @@ class XFAPDF(PDFIO):
 
 class ExampleXFA(XFAPDF):
     """Handles Canada XFA PDF files
-
     """
 
     def __init__(self) -> None:
@@ -164,7 +163,7 @@ class ExampleXFA(XFAPDF):
         Args:
             xml (str): XML content
             mode (Enum): mode of the document defined
-                in :class:`niklib.data.constant.DocTypes`
+                in :class:`niklib.data.constant.ExampleDocTypes`
 
         Returns:
             str: cleaned XML content to be used in CSV file

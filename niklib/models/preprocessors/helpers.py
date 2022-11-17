@@ -37,14 +37,14 @@ def preview_column_transformer(
     Args:
         column_transformer (ColumnTransformer): An instance
             of :class:`sklearn.compose.ColumnTransformer`
-        original (np.ndarray): Original data as a :class:`numpy.ndarray`.
+        original (:class:`numpy.ndarray`): Original data as a :class:`numpy.ndarray`.
             Same shape as ``transformed``
-        transformed (np.ndarray): Transformed data as a :class:`numpy.ndarray`.
+        transformed (:class:`numpy.ndarray`): Transformed data as a :class:`numpy.ndarray`.
             Same shape as ``original``
         df (:class:`pandas.DataFrame`): A dataframe that hosts the ``original`` and ``transformed``
             data. Used to extract column names and unique values for logging
             information about the transformations done
-        random_state (Union[int, np.random.Generator], optional): A seed value or
+        random_state (Union[int, :class:`numpy.random.Generator`], optional): A seed value or
             instance of  :class:`numpy.random.Generator` for sampling. Defaults to
             :func:`numpy.random.default_rng()`.
         **kwargs: Additional arguments as follows:
@@ -56,7 +56,7 @@ def preview_column_transformer(
 
     Yields:
         :class:`pandas.DataFrame`:
-        Preview dataframe for each transformer in ``column_transformer.transformers_``.
+            Preview dataframe for each transformer in ``column_transformer.transformers_``.
             Dataframe has twice as columns as ``original`` and ``transformed``, i.e.
             ``df.shape == (original.shape[0], 2 * original.shape[1])``
     """
