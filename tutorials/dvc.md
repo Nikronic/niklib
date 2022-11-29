@@ -121,11 +121,12 @@ ls -lR dataset/remote-storage
 
 #### Cleaning Local Instance of Tracked Data
 We might have multiple tracked files that we no longer need them in our local directory. For instance, multiple huge files that we tracked, now only want the largest/latest file. For that, we can simply delete the file from our local directory, since we can retrieve it from remote storage whenever we want. For example, now that `data.pkl` is in the remote storage, we no longer need it and we can remove it.
+
 ```bash
 rm -rf raw-dataset/data.pkl
 ```
 
-*WARNING: don not remove *.dvc files or you will lose the link*
+*WARNING: don not remove `*.dvc` files or you will lose the link*
 
 
 #### Cleaning the Cache
