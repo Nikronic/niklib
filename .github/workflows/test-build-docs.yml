@@ -14,19 +14,9 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10.x"
-      - name: Setup Miniconda
-        uses: conda-incubator/setup-miniconda@v2.2.0
-        with:
-            python-version: 3.10.6
-            # auto-update-conda: true
-            mamba-version: "*"
-            activate-environment: niklib-cpu
-            environment-file: env-cpu.yml
-            channels: conda-forge,defaults
-      - name: install the package
-        run: pip install -e .
-        
+          python-version: "3.x"
+      - name: install package and docs optional dependencies
+        run: pip install .[doc]
       - name:  Build docs
         run: |
           cd docs
