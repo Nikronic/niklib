@@ -23,7 +23,10 @@ jobs:
             activate-environment: niklib-cpu
             environment-file: env-cpu.yml
             channels: conda-forge,defaults
-            
-      
-      - name: install package and docs optional dependencies
-        run: pip install .[doc]
+      - name: install the package
+        run: pip install -e .
+        
+      - name:  Build docs
+        run: |
+          cd docs
+          make html
