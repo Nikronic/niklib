@@ -4,7 +4,10 @@ __all__ = [
 
 # core
 import pydantic
-from pydantic import validator
+from pydantic import (
+    validator,
+    Field,
+)
 import json
 # ours
 from niklib.data.constant import (
@@ -83,19 +86,21 @@ class PayloadExample(BaseModel):
         ValueError: _description_
     """
 
-    sex: str
-    @validator('sex')
-    def _sex(cls, value):
-        if value not in ExampleSex.get_member_names():
-            raise ValueError(f'"{value}" is not valid')
-        return value
+    sex: str = ExampleSex
+    # or you can define custom validation as below
 
-    funds: float = 8000.
-    @validator('funds')
-    def _funds(cls, value):
-        if value <= 0.:
-            raise ValueError('funds cannot be negative number.')
-        return value
+    # @validator('sex')
+    # def _sex(cls, value):
+    #     if value not in ExampleSex.get_member_names():
+    #         raise ValueError(f'"{value}" is not valid')
+    #     return value
+
+    funds: float = Field(
+        title='Amount of fund',
+        description='Amount of money you are going to bring and probably spend.',
+        gt=1000.,
+        default=8000.
+    )
 
     class Config:
         orm_mode = True
