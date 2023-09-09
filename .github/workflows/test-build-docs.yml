@@ -1,0 +1,29 @@
+name: Build Sphinx docs
+
+on:
+  push:
+  pull_request:
+  
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Setup Miniconda
+        uses: conda-incubator/setup-miniconda@v2.2.0
+        with:
+            python-version: 3.10
+            mamba-version: "*"
+            activate-environment: niklib-cpu
+            environment-file: env-cpu.yml
+            channels: conda-forge,defaults
+            
+      
+      - name: install package and docs optional dependencies
+        run: pip install .[doc]
