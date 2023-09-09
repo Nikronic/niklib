@@ -19,10 +19,10 @@ copyright = f'{datetime.datetime.now().year}, Nikan Doosti'
 author = 'Nikan Doosti'
 
 # The full version, including alpha/beta/rc tags
-VERSION: dict = {}
-with open('../../niklib/version.py', 'r') as version_file:
-    exec(version_file.read(), VERSION)
-release = VERSION['VERSION']
+version_file_path = '../../VERSION'
+with open(version_file_path, 'r') as version_file:
+    package_version = version_file.read().strip()
+release = package_version
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -45,6 +45,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.autosectionlabel',
     'sphinx_copybutton',
+    'myst_parser',
 ]
 
 napoleon_use_ivar = True
@@ -59,7 +60,6 @@ master_doc = 'index'
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [
-    'niklib.version',
     '_build'
 ]
 
