@@ -38,6 +38,8 @@ dependencies = [
     "enlighten>=1.11.1",
     "dvc>=2.10.2",
     "matplotlib>=3.6.2",
+    "xgboost>=1.7.1",
+    "lightgbm>=3.3.3",
 ]
 
 dynamic = ["version"]
